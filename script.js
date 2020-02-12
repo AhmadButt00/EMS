@@ -13,7 +13,7 @@ class City{
         citiesDrop.appendChild(option);  
     }
     addRow(){
-        var tableDiv = document.getElementById('tableDiv');
+        let tableDiv = document.getElementById('tableDiv');
         tableDiv.style.display = "block";
         let cityTable = document.getElementById('cityTable');
         let tableBody = document.createElement('tbody');
@@ -55,4 +55,4 @@ for(let i=0; i<cityObj.length; i++){
   // Initial datatable display call
   populateDataTable(empArr,'dt');
   // Initializing datatable
-var dataTable = new DataTable("#dt");
+const dataTable = new DataTable("#dt");
