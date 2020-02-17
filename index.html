@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
+    <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>  
+    <title>Home</title>
+</head>
+<body>
+    <!-- Main Container Div -->
+    <div id="container">
+        <h3 >Employee Information</h3>
+        <!-- City Information Div -->
+        <div id="dropdown" class="form-group">
+            <!-- City Select Dropdown -->
+            <select name="citySelect" id="citySelect" class="form-control">
+                <option selected disabled hidden value="selectCity">Select City</option>
+            </select>
+            <hr>
+            <!-- City Table Div -->
+            <div id="tableDiv">
+                <table id="cityTable" class="table">
+                    <thead class="table-success">
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                 </table>
+            </div>
+            <!-- City CRUD Div -->
+            <div id ="cityDiv" class="form-group ">
+                <!-- City CRUD Input -->
+                <label for="city" id="citylbl">City</label>
+                <input type="text" class="form-control w-75" placeholder="Enter City Name" id="cityInp">
+                <br>
+                <label for="new city" id="newCitylbl">New City</label>
+                <input type="text" class="form-control w-75" placeholder="Enter New Name" id="newCityInp">
+                <br>
+                <!-- City CRUD Operation Buttons -->
+                <button type="button" class="btn btn-outline-info cityBtn" id="addCitybtn">Add City</button>
+                <button type="button" class="btn btn-outline-secondary cityBtn" id="updateCitybtn">Update City</button>
+                <button type="button" class="btn btn-outline-danger cityBtn" id="delCitybtn">Delete City</button>
+            </div>
+        </div>
+        <!-- Employee DataTable Div -->
+        <div id="DataTable">
+            <table id="dt" class="table table-bordered table-hover">
+                <tbody>
+                    <thead class="table-warning">
+                        <tr>
+                            <th>Name</th>
+                            <th>Salary</th>
+                            <th>City</th>
+                            <th>Mobile Number</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+html,
+body {
+  width: 100%;
+}
+body {
+  font-family: "Roboto Mono", monospace;
+}
+#container{
+    text-align: center;
+  }
+  h3 {
+    text-align: center;
+    height: 35px;
+    background: radial-gradient(100% 225% at 0% 0%, #DE3E3E 0%, #17115C 100%), radial-gradient(100% 225% at 100% 0%, #FF9040 0%, #FF0000 100%), linear-gradient(180deg, #CE63B7 0%, #ED6283 100%), radial-gradient(100% 120% at 75% 0%, #A74600 0%, #000000 100%), linear-gradient(310deg, #0063D8 0%, #16009A 50%);
+    background-blend-mode: overlay, color-dodge, color-burn, color-dodge, normal;
+    color: antiquewhite;
+    padding-bottom: 5px;
+  }
+  #dropdown{
+      width: 500px;
+      float: left;
+      padding-top: 10px;
+  }
+  #DataTable{
+    width: 60%;
+    margin: 0 auto;
+    padding-right: 10%;
+    padding-top: 1%;
+    float: right;
+    height: 1500px;
+  }
+  .addCity{
+    display: none;
+  }
+  label{
+    float: left;
+    padding-right: 5px;
+    padding-top: 8px;
+  }
+  #cityInp{
+    display: none;
+  }
+  #newCityInp{
+    display: none;
+  }
+  .cityBtn{
+    display: none;
+    margin-left: 30px;
+    float: left;
+  }
+  #citylbl, #newCitylbl{
+    display: none;
+    padding-right: 20px;
+    padding-left: 10px;
+    font-size: large;
+  }
