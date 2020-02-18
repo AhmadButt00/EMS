@@ -18,12 +18,14 @@ function displayAddCityInp(){
     let newCityInp = document.getElementById('newCityInp');
     newCityInp.style.display = "none";
 }
+// Reset all city inputs to default -empty
 function clearCityInp(){
     let cityInp = document.getElementById('cityInp');
     cityInp.value = '';
     let newCityInp = document.getElementById('newCityInp');
     newCityInp.value = '';
     }
+// Display Input for update city
 function displayUpdateInp(){
     let newCitylbl = document.getElementById('newCitylbl');
     newCitylbl.style.display = "block";

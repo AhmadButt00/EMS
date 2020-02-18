@@ -1,6 +1,8 @@
 import {myData} from './JSON/data.js';
 import {initialDt} from './DataTable/InitDataTable.js';
-import {displayCityBtn, displayAddCityInp, clearCityInp, displayUpdateInp} from './Helpers/DisplayCityOp.js';
+import {displayCityBtn, displayAddCityInp, clearCityInp, displayUpdateInp} from './Helpers/City/DisplayCityOp.js';
+import {deleteJson} from './Helpers/Json/DeleteJson.js';
+import {upJson} from './Helpers/Json/UpdateJson.js';
 //City Class Body
 class City{
     constructor(name, newCity){
@@ -70,7 +72,7 @@ class CRUD{
             }
         }
     }
-    updateRow(){
+    updateRow(){ //Update the rows with new user input
         let tableBody = document.getElementById(this.tableid).getElementsByTagName('tbody')[0];
         let rows = tableBody.getElementsByTagName('tr');
         for(let i=0; i<rows.length; i++){
@@ -118,71 +120,13 @@ class CRUD{
         }
         obj[subObject] = [];
         mainObj.push(obj);
-        console.log(mainObj);
     }
     // Removing Object from JSON Data
     delJSON(){
-        myData.cities.forEach(element => {
-            if(element["name"] == this.name && element["softwareHouses"]){
-                delete element["name"];
-                delete element ["softwareHouses"];
-            }
-            else{
-                element.softwareHouses.forEach(house =>{
-                    if(house["name"] == this.name){
-                        delete house["name"];
-                        delete house["departments"];
-                    } 
-                    else{
-                        house.departments.forEach(department =>{
-                            if(department["name"] == this.name){
-                                delete department["name"];
-                                delete department["employees"];
-                            }
-                            else(
-                                department.employees.forEach(employee =>{
-                                    if(employee["name"] == this.name){
-                                        delete employee["name"];
-                                        delete employee["salary"];
-                                        delete employee["mobileNumber"];
-                                        delete employee["city"];
-                                        delete employee["type"];
-                                    }
-                                })
-                            )
-                        })
-                    }
-                })
-            }
-        });
+        deleteJson(this.name);
     }
     updateJSON(){
-        myData.cities.forEach(element => {
-            if(element["name"] == this.name){
-                element["name"] = this.newName;
-            }
-            else{
-                element.softwareHouses.forEach(house =>{
-                    if(house["name"] == this.name){
-                        house["name"] = this.newName;
-                    } 
-                    else{
-                        house.departments.forEach(department =>{
-                            if(department["name"] == this.name){
-                                department["name"] = this.newName;
-                            }
-                            else(
-                                department.employees.forEach(employee =>{
-                                    if(employee["name"] == this.name){
-                                        employee["name"] = this.newName;
-                                    }
-                                })
-                            )
-                        })
-                    }
-                })
-            }
-        });
+        upJson(this.name, this.newName);
     }
 }
 // Populate All Employees DataTable
@@ -214,7 +158,6 @@ function addCity(){
             cityOb.addRow();
             cityOb.addJSON();
             clearCityInp();
-            console.log(myData);
         }
         else{
             alert("City Already Exists");
@@ -235,7 +178,6 @@ function delCity(){                             //delete cityOnClick
             cityOb.delOption();
             cityOb.delJSON();
             clearCityInp();
-            console.log(myData);
         }
         else{
             alert("City Doesn't Exists");
