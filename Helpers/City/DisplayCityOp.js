@@ -6,6 +6,8 @@ function displayCityBtn() {
   delCitybtn.style.display = "block";
   let updateCitybtn = document.getElementById("updateCitybtn");
   updateCitybtn.style.display = "block";
+  let depDiv = document.getElementById('depDropdown');
+  depDiv.style.display = "none";
 }
 // Display Add City Input
 function displayAddCityInp() {

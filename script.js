@@ -45,8 +45,8 @@ function removedtRows() {
     dataTable.rows().remove(rowToRemove.dataIndex);
   });
   dataTable.page(1);
-  let rows = dataTable.body.querySelectorAll("tr");
-  rows.forEach(x => {
+  let dtRows = dataTable.body.querySelectorAll("tr");
+  dtRows.forEach(x => {
     dataTable.rows().remove(rowToRemove.dataIndex);
   });
 }
