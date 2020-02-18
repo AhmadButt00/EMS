@@ -11,23 +11,27 @@ import { upJson } from "./Helpers/Json/UpdateJson.js";
 import { houseDataTable } from "./DataTable/HouseDataTable.js";
 import { displayHouseDrp, getHouses } from "./Helpers/City/DisplayHouseInfo.js";
 import {removeExistingHouse} from './Helpers/City/RemoveExistingHouse.js';
-import {displayHouseBtn} from './Helpers/House/DisplayHouseOp.js';
-//City Class Body
-class City {
-  constructor() {
+import { displayHouseBtn, displayAddHouseInp, clearHouseInp, displayHouseUpdateInp } from './Helpers/House/DisplayHouseOp.js';
+import {depDataTable} from './DataTable/DepDataTable.js';
+
+// Inputs Class Body
+class Inputs {
+  constructor(input, newInput) {
+      this.input = input;
+      this.newInput = newInput;
   }
-  // Get City Input
-  getCity() {
-    let cityInp = document.getElementById("cityInp").value;
-    if (cityInp != null || cityInp != undefined || cityInp != "") {
-      return cityInp;
+  // Get Input
+  getInput() {
+    let Inp = document.getElementById(this.input).value;
+    if (Inp != null || Inp != undefined || Inp != "") {
+      return Inp;
     }
   }
-  getnewCity() {
-    //Get new City Input
-    let newCityInp = document.getElementById("newCityInp").value;
-    if (newCityInp != null || newCityInp != undefined || newCityInp != "") {
-      return newCityInp;
+  getnewInput() {
+    //Get new Input
+    let newInp = document.getElementById(this.newInput).value;
+    if (newInp != null || newInp != undefined || newInp != "") {
+      return newInp;
     }
   }
 }
@@ -199,11 +203,11 @@ function changeCitySelect() {
 //Adding City Select OnChange Attribute
 const citySe = document.getElementById("citySelect");
 citySe.addEventListener("change", changeCitySelect);
-let cityObj = new City();
+let cityObj = new Inputs("cityInp", "newCityInp");
 // Add City Button onClick
 function addCity() {
   displayAddCityInp(); //Display Add City Input
-  let city = cityObj.getCity(); //Get City User Input
+  let city = cityObj.getInput(); //Get City User Input
   if (city.length != 0) {
     let cityOb = new CRUD(
       "cityTable",
@@ -229,7 +233,7 @@ addCityBtn.addEventListener("click", addCity);
 function delCity() {
   //delete cityOnClick
   displayAddCityInp();
-  let city = cityObj.getCity();
+  let city = cityObj.getInput();
   if (city.length != 0) {
     let cityOb = new CRUD(
       "cityTable",
@@ -257,8 +261,8 @@ delCityBtn.addEventListener("click", delCity);
 function updateCity() {
   displayAddCityInp();
   displayUpdateInp();
-  let city = cityObj.getCity();
-  let newCity = cityObj.getnewCity();
+  let city = cityObj.getInput();
+  let newCity = cityObj.getnewInput();
   if (city.length != 0 && newCity.length != 0) {
     let cityOb = new CRUD(
       "cityTable",
@@ -284,10 +288,111 @@ function updateCity() {
 const updateCityBtn = document.getElementById("updateCitybtn");
 updateCityBtn.addEventListener("click", updateCity);
 
+// Display Department Wise Employee DataTable
+function depEmpDt(){
+    var depEmpArr = depDataTable();
+    depEmpArr.forEach(element =>{
+      let dataArr = Object.values(element)
+      dataTable.rows().add(dataArr);
+    })
+  }
+
 function changeDepSelect(){
     displayHouseBtn();
+    removedtRows(); //Remove Exisiting DataTable Rows
+    depEmpDt(); //Display City Wise Employees DataTable
 }
 
 // Adding Software House Select onChange Attribute
 const houseSe = document.getElementById('houseSelect');
 houseSe.addEventListener("change", changeDepSelect);
+
+let houseObj = new Inputs("houseInp", "newHouseInp");
+// Add House Button onClick
+function addHouse() {
+  displayAddHouseInp(); //Display Add House Input
+  let house = houseObj.getInput(); //Get House User Input
+  if (house.length != 0) {
+    let houseOb = new CRUD(
+      "houseTable",
+      "houseSelect",
+      house,
+      myData.cities[1].softwareHouses,
+      "departments"
+    );
+    let check = houseOb.checkExisting(); //Check if House already Exists..!!
+    if (check == true) {
+      houseOb.addOption();
+      houseOb.addRow();
+      houseOb.addJSON();
+      clearHouseInp();
+    } else {
+      alert("House Already Exists");
+      clearHouseInp();
+    }
+  }
+}
+const addHouseBtn = document.getElementById("addHousebtn"); //Add House onClick
+addHouseBtn.addEventListener("click", addHouse);
+
+function delHouse() {
+    //delete house OnClick
+    displayAddHouseInp();
+    let house = houseObj.getInput();
+    if (house.length != 0) {
+      let houseOb = new CRUD(
+        "houseTable",
+        "houseSelect",
+        house,
+        myData.cities[1].softwareHouses,
+      "departments"
+      );
+      let check = houseOb.checkExisting(); //Check if house exists
+      if (check == false) {
+        houseOb.delRow();
+        houseOb.delOption();
+        houseOb.delJSON();
+        clearHouseInp();
+      } else {
+        alert("House Doesn't Exists");
+        clearHouseInp();
+      }
+    }
+  }
+  //Delete House onClick
+  const delHouseBtn = document.getElementById("delHousebtn");
+  delHouseBtn.addEventListener("click", delHouse);
+
+  //Update City
+function updateHouse() {
+  displayAddHouseInp();
+  displayHouseUpdateInp();
+  let house = houseObj.getInput();
+  let newHouse = houseObj.getnewInput();
+  if (house.length != 0 && newHouse.length != 0) {
+    let houseOb = new CRUD(
+      "houseTable",
+      "houseSelect",
+      house,
+      myData.cities[1].softwareHouses,
+      "departments",
+      newHouse
+    );
+    let check = houseOb.checkExisting(); //Check if city exists
+    if (check == false) {
+      houseOb.updateOption();
+      houseOb.updateRow();
+      houseOb.updateJSON();
+      clearHouseInp();
+    } else {
+      alert("House Doesn't Exists");
+      clearHouseInp();
+    }
+  }
+}
+//Update City onClick
+const updateHouseBtn = document.getElementById("updateHousebtn");
+updateHouseBtn.addEventListener("click", updateHouse);
+
+
+
