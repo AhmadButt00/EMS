@@ -11,12 +11,31 @@ body {
 h3 {
   text-align: center;
   height: 35px;
-  background: radial-gradient(100% 225% at 0% 0%, #de3e3e 0%, #17115c 100%),
-    radial-gradient(100% 225% at 100% 0%, #ff9040 0%, #d41c1c 100%),
-    linear-gradient(180deg, #ce63b7 0%, #ed6283 100%),
-    radial-gradient(100% 120% at 75% 0%, #a74600 0%, #000000 100%),
-    linear-gradient(310deg, #0063d8 0%, #16009a 50%);
-  background-blend-mode: overlay, color-dodge, color-burn, color-dodge, normal;
+  background: linear-gradient(235deg, #ffffff 0%, #000f25 100%),
+    linear-gradient(180deg, #6100ff 0%, #000000 100%),
+    linear-gradient(
+      235deg,
+      #ffa3ac 0%,
+      #ffa3ac 40%,
+      #00043c calc(40% + 1px),
+      #00043c 60%,
+      #005d6c calc(60% + 1px),
+      #005d6c 70%,
+      #00c9b1 calc(70% + 1px),
+      #00c9b1 100%
+    ),
+    linear-gradient(
+      125deg,
+      #ffa3ac 0%,
+      #ffa3ac 40%,
+      #00043c calc(40% + 1px),
+      #00043c 60%,
+      #005d6c calc(60% + 1px),
+      #005d6c 70%,
+      #00c9b1 calc(70% + 1px),
+      #00c9b1 100%
+    );
+  background-blend-mode: soft-light, screen, darken, normal;
   color: antiquewhite;
   padding-bottom: 5px;
 }

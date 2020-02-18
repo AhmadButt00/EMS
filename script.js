@@ -1,18 +1,19 @@
-import { myData } from "./JSON/data.js";
-import { CRUD } from "./Classes/CrudClass.js";
-import { initialDt } from "./DataTable/InitDataTable.js";
-import { displayCityBtn } from "./Helpers/City/DisplayCityOp.js";
-import { addCity, delCity, updateCity } from "./CRUD/CityCrud.js";
-import { addHouse, delHouse, updateHouse } from "./CRUD/HouseCrud.js";
-import { addDep, delDep, updateDep } from "./CRUD/DepCrud.js";
-import { houseDataTable } from "./DataTable/HouseDataTable.js";
-import { displayHouseDrp, getHouses } from "./Helpers/City/DisplayHouseInfo.js";
-import { removeExistingDep } from "./Helpers/Department/RemoveExistingDepartments.js";
-import { populateHouseIn } from "./Functions/PopulateHouse.js";
-import { displayHouseBtn } from "./Helpers/House/DisplayHouseOp.js";
-import { depDataTable } from "./DataTable/DepDataTable.js";
-import { displayDepDrp, getDeps } from "./Helpers/House/DisplayDepInfo.js";
-import { displayDepBtn } from "./Helpers/Department/DisplayDepOp.js";
+import { myData } from "./JSON/data.js"; //Main Object JSON
+import { CRUD } from "./Classes/CrudClass.js"; //CRUD Class Import
+import { initialDt } from "./DataTable/InitDataTable.js"; //Initial DataTable Populate Function
+import { displayCityBtn } from "./Helpers/City/DisplayCityOp.js"; //DIsplay City CRUD Buttons
+import { addCity, delCity, updateCity } from "./CRUD/CityCrud.js"; //City CRUD Functions
+import { addHouse, delHouse, updateHouse } from "./CRUD/HouseCrud.js"; //House CRUD Functions
+import { addDep, delDep, updateDep } from "./CRUD/DepCrud.js"; //Department CRUD Functions
+import { houseDataTable } from "./DataTable/HouseDataTable.js"; //House DataTable Populate
+import { displayHouseDrp } from "./Helpers/City/DisplayHouseInfo.js"; //Display House Select and Table Div
+import { removeExistingDep } from "./Helpers/Department/RemoveExistingDepartments.js"; //Remove existing options and rows of departments
+import { populateHouseIn } from "./Functions/PopulateHouse.js"; //Populate House DataTable
+import { displayHouseBtn } from "./Helpers/House/DisplayHouseOp.js"; //Display House Div and related operations
+import { depDataTable } from "./DataTable/DepDataTable.js"; //Display Department wise DataTabl;e
+import { displayDepDrp, getDeps } from "./Helpers/House/DisplayDepInfo.js"; //Display Department Div , select and rows
+import { displayDepBtn } from "./Helpers/Department/DisplayDepOp.js"; //Get Department related operations
+import { empDataTable } from "./DataTable/EmpDataTable.js"; //Populate Department wise DataTable
 
 // Populate All Employees DataTable
 initialDt();
@@ -30,7 +31,7 @@ cityArr.forEach(name => {
 });
 // Populate Datatable with city wise employees
 function cityEmpDt() {
-  var cityEmpArr = houseDataTable();
+  let cityEmpArr = houseDataTable();
   cityEmpArr.forEach(element => {
     let dataArr = Object.values(element);
     dataTable.rows().add(dataArr);
@@ -38,13 +39,13 @@ function cityEmpDt() {
 }
 // Remove Existing rows from the datatable
 function removedtRows() {
-  var rowToRemove = dataTable.body.querySelector("tr");
-  var rows = dataTable.body.querySelectorAll("tr");
+  let rowToRemove = dataTable.body.querySelector("tr");
+  let rows = dataTable.body.querySelectorAll("tr");
   rows.forEach(x => {
     dataTable.rows().remove(rowToRemove.dataIndex);
   });
   dataTable.page(1);
-  var rows = dataTable.body.querySelectorAll("tr");
+  let rows = dataTable.body.querySelectorAll("tr");
   rows.forEach(x => {
     dataTable.rows().remove(rowToRemove.dataIndex);
   });
@@ -86,13 +87,13 @@ updateCityBtn.addEventListener("click", updateCityFn);
 
 // Display Department Wise Employee DataTable
 function depEmpDt() {
-  var depEmpArr = depDataTable();
+  let depEmpArr = depDataTable();
   depEmpArr.forEach(element => {
     let dataArr = Object.values(element);
     dataTable.rows().add(dataArr);
   });
 }
-
+// Add Rows and Options of Departments
 function populateDepInfo() {
   const depCheck = document.querySelectorAll("#depTable tbody tr"); //Get Department Table Rows
   let deps = getDeps();
@@ -107,6 +108,7 @@ function populateDepInfo() {
     populateDepInfo();
   }
 }
+//onChange SoftwareHouse select dropdown
 function changeDepSelect() {
   displayHouseBtn();
   displayDepDrp();
@@ -140,8 +142,19 @@ function updateHouseFn() {
 const updateHouseBtn = document.getElementById("updateHousebtn");
 updateHouseBtn.addEventListener("click", updateHouseFn);
 
+//Display Department Employees DataTable
+function empDt() {
+  let depdtArr = empDataTable();
+  depdtArr.forEach(element => {
+    let dataArr = Object.values(element);
+    dataTable.rows().add(dataArr);
+  });
+}
+// On Change Department Select Dropdown
 function changeEmpSelect() {
   displayDepBtn();
+  removedtRows();
+  empDt();
 }
 
 // Adding Department Select onChange Attribute
