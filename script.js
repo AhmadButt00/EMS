@@ -10,11 +10,11 @@ import { deleteJson } from "./Helpers/Json/DeleteJson.js";
 import { upJson } from "./Helpers/Json/UpdateJson.js";
 import { houseDataTable } from "./DataTable/HouseDataTable.js";
 import { displayHouseDrp, getHouses } from "./Helpers/City/DisplayHouseInfo.js";
+import {removeExistingHouse} from './Helpers/City/RemoveExistingHouse.js';
+import {displayHouseBtn} from './Helpers/House/DisplayHouseOp.js';
 //City Class Body
 class City {
-  constructor(name, newCity) {
-    this.name = name;
-    this.newCity = newCity;
+  constructor() {
   }
   // Get City Input
   getCity() {
@@ -184,13 +184,7 @@ function populateHouseInfo() {
       houseOb.addRow();
     }
   } else {
-    houseCheck.forEach(element => {
-      element.parentNode.removeChild(element); //Remove Existing Rows
-    });
-    let houseOption = document.querySelectorAll(".houseOption"); //Get all SoftwareHouse Select Options
-    houseOption.forEach(element => {
-      element.parentNode.removeChild(element); //Remove Existing Options
-    });
+    removeExistingHouse();
     populateHouseInfo();
   }
 }
@@ -290,3 +284,10 @@ function updateCity() {
 const updateCityBtn = document.getElementById("updateCitybtn");
 updateCityBtn.addEventListener("click", updateCity);
 
+function changeDepSelect(){
+    displayHouseBtn();
+}
+
+// Adding Software House Select onChange Attribute
+const houseSe = document.getElementById('houseSelect');
+houseSe.addEventListener("change", changeDepSelect);

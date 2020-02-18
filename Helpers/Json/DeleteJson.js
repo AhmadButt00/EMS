@@ -1,7 +1,7 @@
 import {myData} from '../../JSON/data.js';
 function deleteJson(name){
     myData.cities.forEach(element => {
-        if(element["name"] == name && element["softwareHouses"]){
+        if(element["name"] == name){
             delete element["name"];
             delete element ["softwareHouses"];
         }
