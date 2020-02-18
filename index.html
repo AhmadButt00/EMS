@@ -64,7 +64,38 @@
                 </tbody>
             </table>
         </div>
-    </div>
+        <div id="houseDropdown" class="form-group">
+            <!-- City Select Dropdown -->
+            <select name="houseSelect" id="houseSelect" class="form-control">
+                <option selected disabled hidden value="selectHouse">Select Software House</option>
+            </select>
+            <hr>
+            <!-- City Table Div -->
+            <div id="houseTableDiv">
+                <table id="houseTable" class="table">
+                    <thead class="table-success">
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                 </table>
+            </div>
+            <!-- City CRUD Div -->
+            <div id ="houseDiv" class="form-group ">
+                <!-- City CRUD Input -->
+                <label for="house" id="houselbl">Name</label>
+                <input type="text" class="form-control w-75" placeholder="Enter House Name" id="houseInp">
+                <br>
+                <label for="new house" id="newHouselbl">New name</label>
+                <input type="text" class="form-control w-75" placeholder="Enter New Name" id="newHouseInp">
+                <br>
+                <!-- City CRUD Operation Buttons -->
+                <button type="button" class="btn btn-outline-info houseBtn" id="addHousebtn">Add House</button>
+                <button type="button" class="btn btn-outline-secondary houseBtn" id="updateHousebtn">Update House</button>
+                <button type="button" class="btn btn-outline-danger houseBtn" id="delHousebtn">Delete House</button>
+            </div>
+        </div>
        <!-- Main script file  -->
     <script type="module" src="script.js"></script>
 </body>
