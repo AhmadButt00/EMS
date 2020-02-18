@@ -95,6 +95,37 @@
                 <button type="button" class="btn btn-outline-secondary houseBtn" id="updateHousebtn">Update House</button>
                 <button type="button" class="btn btn-outline-danger houseBtn" id="delHousebtn">Delete House</button>
             </div>
+            <div id="depDropdown" class="form-group">
+                <!-- City Select Dropdown -->
+                <select name="depSelect" id="depSelect" class="form-control">
+                    <option selected disabled hidden value="selectDep">Select Department</option>
+                </select>
+                <hr>
+                <!-- City Table Div -->
+                <div id="depTableDiv">
+                    <table id="depTable" class="table">
+                        <thead class="table-success">
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                     </table>
+                </div>
+                <!-- City CRUD Div -->
+                <div id ="depDiv" class="form-group ">
+                    <!-- City CRUD Input -->
+                    <label for="dep" id="deplbl">Name</label>
+                    <input type="text" class="form-control w-75" placeholder="Enter Department" id="depInp">
+                    <br>
+                    <label for="new dep" id="newDeplbl">New name</label>
+                    <input type="text" class="form-control w-75" placeholder="Enter New Name" id="newDepInp">
+                    <br>
+                    <!-- City CRUD Operation Buttons -->
+                    <button type="button" class="btn btn-outline-info depBtn" id="addDepbtn">Add Dep</button>
+                    <button type="button" class="btn btn-outline-secondary depBtn" id="updateDepbtn">Update Dep</button>
+                    <button type="button" class="btn btn-outline-danger depBtn" id="delDepbtn">Delete Dep</button>
+                </div>
         </div>
        <!-- Main script file  -->
     <script type="module" src="script.js"></script>

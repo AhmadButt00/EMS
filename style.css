@@ -5,71 +5,100 @@ body {
 body {
   font-family: "Roboto Mono", monospace;
 }
-#container{
-    text-align: center;
-  }
-  h3 {
-    text-align: center;
-    height: 35px;
-    background: radial-gradient(100% 225% at 0% 0%, #DE3E3E 0%, #17115C 100%), radial-gradient(100% 225% at 100% 0%, #FF9040 0%, #FF0000 100%), linear-gradient(180deg, #CE63B7 0%, #ED6283 100%), radial-gradient(100% 120% at 75% 0%, #A74600 0%, #000000 100%), linear-gradient(310deg, #0063D8 0%, #16009A 50%);
-    background-blend-mode: overlay, color-dodge, color-burn, color-dodge, normal;
-    color: antiquewhite;
-    padding-bottom: 5px;
-  }
-  #dropdown{
-      width: 500px;
-      float: left;
-      padding-top: 10px;
-  }
-  #DataTable{
-    width: 55%;
-    margin: 0 auto;
-    padding-right: 10%;
-    padding-top: 1%;
-    float: right;
-    height: 1500px;
-  }
-  .addCity{
-    display: none;
-  }
-  label{
-    float: left;
-    padding-right: 5px;
-    padding-top: 8px;
-  }
-  #cityInp{
-    display: none;
-  }
-  #newCityInp{
-    display: none;
-  }
-  .cityBtn{
-    display: none;
-    margin-left: 30px;
-    float: left;
-  }
-  #citylbl, #newCitylbl{
-    display: none;
-    padding-right: 20px;
-    padding-left: 10px;
-    font-size: large;
-  }
-  #houseDropdown{
-    width: 500px;
-    margin-top: auto;
-    display: none;
-  }
-  #houselbl, #newHouselbl{
-    display: none;
-    padding-right: 20px;
-    padding-left: 10px;
-    font-size: large;
-  }
-  #houseInp, #newHouseInp{
-    display: none;
-  }
-  .houseBtn{
-    display: none;
-    margin-left: 30px;
-    float: left;
-  }
+#container {
+  text-align: center;
+}
+h3 {
+  text-align: center;
+  height: 35px;
+  background: radial-gradient(100% 225% at 0% 0%, #de3e3e 0%, #17115c 100%),
+    radial-gradient(100% 225% at 100% 0%, #ff9040 0%, #d41c1c 100%),
+    linear-gradient(180deg, #ce63b7 0%, #ed6283 100%),
+    radial-gradient(100% 120% at 75% 0%, #a74600 0%, #000000 100%),
+    linear-gradient(310deg, #0063d8 0%, #16009a 50%);
+  background-blend-mode: overlay, color-dodge, color-burn, color-dodge, normal;
+  color: antiquewhite;
+  padding-bottom: 5px;
+}
+#dropdown {
+  width: 500px;
+  float: left;
+  padding-top: 10px;
+}
+#DataTable {
+  width: 55%;
+  margin: 0 auto;
+  padding-right: 10%;
+  padding-top: 1%;
+  float: right;
+  height: 1500px;
+}
+.addCity {
+  display: none;
+}
+label {
+  float: left;
+  padding-right: 5px;
+  padding-top: 8px;
+}
+#cityInp {
+  display: none;
+}
+#newCityInp {
+  display: none;
+}
+.cityBtn {
+  display: none;
+  margin-left: 30px;
+  float: left;
+}
+#citylbl,
+#newCitylbl {
+  display: none;
+  padding-right: 20px;
+  padding-left: 10px;
+  font-size: large;
+}
+#houseDropdown {
+  width: 500px;
+  margin-top: auto;
+  display: none;
+}
+#houselbl,
+#newHouselbl {
+  display: none;
+  padding-right: 20px;
+  padding-left: 10px;
+  font-size: large;
+}
+#houseInp,
+#newHouseInp {
+  display: none;
+}
+.houseBtn {
+  display: none;
+  margin-left: 30px;
+  float: left;
+  margin-bottom: 20px;
+}
+#depDropdown {
+  width: 500px;
+  margin-top: auto;
+  display: none;
+}
+#deplbl,
+#newDeplbl {
+  display: none;
+  padding-right: 20px;
+  padding-left: 10px;
+  font-size: large;
+}
+#depInp,
+#newDepInp {
+  display: none;
+}
+.depBtn {
+  display: none;
+  margin-left: 30px;
+  float: left;
+}

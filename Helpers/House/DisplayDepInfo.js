@@ -1,24 +1,24 @@
 import {myData} from '../../JSON/data.js';
-function displayHouseDrp(){
+//Display Department Info Div
+function displayDepDrp(){
     let depDrpDiv = document.getElementById('depDropdown');
     depDrpDiv.style.display = 'block';
 }
+// Get all Department Names
 function getDeps(){
     let depEmpArr = [];
     let depDropDiv = document.getElementById('depDropdown');
     depDropDiv.style.display = "block";
     let selectedCity = document.getElementById('citySelect').value;
     let selectedHouse = document.getElementById('houseSelect').value;
-    cityObj.forEach( cityOb => {
+    myData.cities.forEach( cityOb => {
       if(selectedCity == cityOb.name){
         let softwareHouses = cityOb.softwareHouses;
         softwareHouses.forEach(houseObj =>{
           if(selectedHouse == houseObj.name){
+            let departments = houseObj.departments;
             departments.forEach(department =>{
-              let employees = department.employees;
-              employees.forEach(employee =>{
-                depEmpArr.push(employee);
-              })
+              depEmpArr.push(department.name)
             })
           }
         })
@@ -26,4 +26,4 @@ function getDeps(){
     })
     return depEmpArr;
   }
-export {displayHouseDrp, getDeps};
+export {displayDepDrp, getDeps};
